@@ -22,3 +22,44 @@ cachemean <- function(x, ...) {
         x$setmean(m)
         m
 }
+
+## # A tibble: 114 x 4
+##                     writer  source destination       date
+##                      <chr>   <chr>       <chr>     <date>
+##  1 Meulen, Andries van der Antwerp       Delft 1585-01-03
+##  2 Meulen, Andries van der Antwerp     Haarlem 1585-01-09
+##  3 Meulen, Andries van der Antwerp     Haarlem 1585-01-11
+##  4 Meulen, Andries van der Antwerp       Delft 1585-01-12
+##  5 Meulen, Andries van der Antwerp     Haarlem 1585-01-12
+##  6 Meulen, Andries van der Antwerp       Delft 1585-01-17
+##  7 Meulen, Andries van der Antwerp       Delft 1585-01-22
+##  8 Meulen, Andries van der Antwerp       Delft 1585-01-23
+##  9    Della Faille, Marten Antwerp     Haarlem 1585-01-24
+## 10 Meulen, Andries van der Antwerp       Delft 1585-01-28
+## # ... with 104 more rows
+## # A tibble: 9 x 1
+##      source
+##       <chr>
+## 1   Antwerp
+## 2   Haarlem
+## 3 Dordrecht
+## 4    Venice
+## 5     Lisse
+## 6  Het Vlie
+## 7   Hamburg
+## 8     Emden
+## 9 Amsterdam
+## # A tibble: 5 x 1
+##   destination
+##         <chr>
+## 1       Delft
+## 2     Haarlem
+## 3   The Hague
+## 4  Middelburg
+## 5      Bremen
+cities <- full_join(sources, destinations, by = c("source" = "destination"))
+cities
+cities <- rename(cities, place = source)
+head(cities, n = 2)
+library(sf)
+library(mapview)
